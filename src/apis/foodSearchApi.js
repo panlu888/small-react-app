@@ -1,6 +1,5 @@
 import $ from 'jquery';
 var constants = require('../constants/foodSearchConstants');
-console.log('constants: ', constants);
 
 const BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?';
 const WEATHER_API_KEY = 'e004ef9d8473ba2bdf87f71c0de30f20';

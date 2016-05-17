@@ -4,11 +4,10 @@ require('styles/App.css');
 import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import SearchForm from './SearchForm';
+import Header from './Header';
 import Actions from '../actions/foodSearchAction';
 import SearchStore from '../stores/foodSearchStore';
 import 'bootstrap/dist/css/bootstrap.css';
-
-let yeomanImage = require('../images/yeoman.png');
 
 const AppComponent = React.createClass({
   getInitialState: function() {
@@ -31,11 +30,9 @@ const AppComponent = React.createClass({
   
   render: function() {
     return (
-      <div className="container index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      	<button type="submit" className="btn btn-primary">Apply</button>
-      	<SearchForm />
+      <div className='container'>
+      	<Header />
+        <SearchForm />
       </div>
     );
   }

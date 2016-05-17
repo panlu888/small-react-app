@@ -5,17 +5,17 @@ body {
 }
 
 .index img {
-  margin: 40px auto;
+  /*margin: 40px auto;
   border-radius: 4px;
   background: green;
-  display: block;
+  display: block;*/
 }
 
 .index .notice {
-  margin: 20px auto;
+  /*margin: 20px auto;
   padding: 15px 0;
   text-align: center;
   border: 1px solid #000;
   border-width: 1px 0;
-  background: #666;
+  background: #666;*/
 }
