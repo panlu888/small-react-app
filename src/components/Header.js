@@ -1,8 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-var _ = require('lodash');
-
 const HeaderComponent = React.createClass({
 	getInitialState: function() {
 		return {
