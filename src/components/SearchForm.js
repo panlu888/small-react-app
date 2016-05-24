@@ -6,13 +6,16 @@ require('styles/SearchForm.less');
 class FormComponent extends React.Component {
 	render() {
 		return (
-			<form className="navbar-form navbar-right" role="search">
-				<div className="form-group">
-					<input type="text" className="form-control" placeholder="Search" />
-				</div>
-				<button type="submit" className="btn btn-default">Submit</button>
-			</form>
-		);					
+     <div className="row">
+      <form className="form-inline pull-right">
+         <div className="form-group">
+              <label for="exampleInputName2">Name</label>
+              <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe" />
+         </div>
+         <button type="submit" className="btn btn-primary">Send invitation</button>
+      </form>
+     </div>
+    );					
 	}
 } 
 

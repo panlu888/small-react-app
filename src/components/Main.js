@@ -30,8 +30,8 @@ const AppComponent = React.createClass({
   
   render: function() {
     return (
-      <div className='container'>
-      	<Header />
+      <div className="container-fluid">
+        <Header />
         <SearchForm />
       </div>
     );
