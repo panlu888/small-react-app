@@ -31,6 +31,10 @@ const HeaderComponent = React.createClass({
 						<li className={this.isActive('Page2')}><a href="#" onClick={this.setActive.bind(this, 'Page2')}>Page 2</a></li> 
 						<li className={this.isActive('Page3')}><a href="#" onClick={this.setActive.bind(this, 'Page3')}>Page 3</a></li> 
 					</ul>
+					<form className="form-inline pull-right">
+    				<input className="form-control" type="text" placeholder="Zip or City Name" />
+    				<button className="btn btn-success" type="submit">Search</button>
+  				</form>
 				</nav>
 		);
 	}

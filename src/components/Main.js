@@ -3,7 +3,6 @@ require('styles/App.css');
 
 import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
-import SearchForm from './SearchForm';
 import Header from './Header';
 import Actions from '../actions/foodSearchAction';
 import SearchStore from '../stores/foodSearchStore';
@@ -32,7 +31,6 @@ const AppComponent = React.createClass({
     return (
       <div className="container-fluid">
         <Header />
-        <SearchForm />
       </div>
     );
   }
