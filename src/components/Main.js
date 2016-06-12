@@ -4,6 +4,7 @@ require('styles/App.css');
 import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Header from './Header';
+import Map from './Map';
 import Actions from '../actions/foodSearchAction';
 import SearchStore from '../stores/foodSearchStore';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -31,6 +32,7 @@ const AppComponent = React.createClass({
     return (
       <div className="container-fluid">
         <Header />
+        <Map {...this.state.weatherData} />
       </div>
     );
   }
