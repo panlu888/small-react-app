@@ -5,18 +5,18 @@ import React from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Header from './Header';
 import Map from './Map';
-import Actions from '../actions/foodSearchAction';
+import Api from '../apis/foodSearchApi';
 import SearchStore from '../stores/foodSearchStore';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const AppComponent = React.createClass({
   getInitialState: function() {
-  	return ({ weatherData: SearchStore.getcurWeatherData() });
+    return { weatherData: SearchStore.getcurWeatherData() };
   },
   
   componentDidMount: function() {
   	SearchStore.addChangeListener(this._onChange);
-  	Actions.searchByZip('30022', 'us');
+    Api.searchByZip('30022', 'us', this._successCallBack,  this._errorCallBack);
   },	
   
   componentWillUnmount: function() {
@@ -24,14 +24,21 @@ const AppComponent = React.createClass({
   },
   
   _onChange: function() {
-  	this.setState({ weatherData: SearchStore.getcurWeatherData() });
-  	console.log('weatherData: ', SearchStore.getcurWeatherData());
+    this.setState({ weatherData: SearchStore.getcurWeatherData() });
+  },
+  
+  _successCallBack: function(data) {
+    this.setState({ weatherData: data });
+  },
+  
+  _errorCallBack: function(err) {
+    console.log(err);
   },
   
   render: function() {
     return (
       <div className="container-fluid">
-        <Header />
+        <Header {...this.state.weatherData} />
         <Map {...this.state.weatherData} />
       </div>
     );
