@@ -39,7 +39,6 @@ const AppComponent = React.createClass({
     return (
       <div className="container-fluid">
         <Header {...this.state.weatherData} />
-        
       </div>
     );
   }
