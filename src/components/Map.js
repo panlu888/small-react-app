@@ -7,7 +7,7 @@ const PopInfoWindow = React.createClass({
     return {center: {}, markers: []};
   },
 
-  componentDidMount:: function() {
+  componentDidMount: function() {
     var center = this.props.center;
     var position = new google.maps.LatLng(center.lat, center.lng);
     var marker = _.assign({}, {'position': position}, {'showInfo': false});
@@ -16,7 +16,7 @@ const PopInfoWindow = React.createClass({
 
   handleMarkerClick: function(marker) {
     marker.showInfo = true;
-    this.setState(markers: [marker]);
+    this.setState({markers: [marker]});
   },
 
   renderInfoWindow: function(ref, marker) {
