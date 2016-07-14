@@ -10,4 +10,4 @@ const MyGreatPlace = React.createClass({
 	}
 });
 
-module.exports = MyGreatPlace;
+export default MyGreatPlace;

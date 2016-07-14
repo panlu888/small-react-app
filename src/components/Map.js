@@ -12,14 +12,15 @@ const MapComponent = React.createClass({
 	},
 	
 	render: function() {
+		console.log(this.props);
 		return (
 			<GoogleMap
-				center={this.getCenter}
-				zoom={4}>
-				<MyGreatPlace lat={this.props.coord.lat} lng={this.props.coord.lon} text={this.props.name} />
-			</GoogleMap>
+        defaultCenter={this.getCenter}
+        zoom={4}>
+      	<h1>{this.props.name}</h1>
+      </GoogleMap>
 		);
 	}
 });
 
-module.exports = MapComponent;
+export default MapComponent;
