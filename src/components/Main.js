@@ -8,6 +8,7 @@ import Map from './Map';
 import Api from '../apis/foodSearchApi';
 import SearchStore from '../stores/foodSearchStore';
 import 'bootstrap/dist/css/bootstrap.css';
+var _ = require('lodash');
 
 const AppComponent = React.createClass({
   getInitialState: function() {
@@ -36,9 +37,13 @@ const AppComponent = React.createClass({
   },
   
   render: function() {
+    var center = _.get(this.state.weatherData, 'coord');
     return (
       <div className="container-fluid">
         <Header {...this.state.weatherData} />
+        {
+          _.isEmpty(center) ? null: <Map center={center} />
+        }
       </div>
     );
   }

@@ -9,7 +9,7 @@ const PopInfoWindow = React.createClass({
 
   componentDidMount: function() {
     var center = this.props.center;
-    var position = new google.maps.LatLng(center.lat, center.lng);
+    var position = new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lon));
     var marker = _.assign({}, {'position': position}, {'showInfo': false});
     this.setState({center: center, markers: [marker]});
   },
@@ -19,9 +19,17 @@ const PopInfoWindow = React.createClass({
     this.setState({markers: [marker]});
   },
 
+  handleMarkerClose: function(marker) {
+    marker.showInfo = false;
+    this.setState({markers: [marker]});
+  },
+  
   renderInfoWindow: function(ref, marker) {
     return (
-      <InfoWindow>
+      <InfoWindow 
+      key={ref+'_info_window'}
+      onCloseClick={this.handleMarkerClose.bind(this, marker)}>
+        <div>hello world</div>  
       </InfoWindow>
     );
   },
@@ -63,3 +71,4 @@ const PopInfoWindow = React.createClass({
   }
 });
 
+module.exports = PopInfoWindow;
