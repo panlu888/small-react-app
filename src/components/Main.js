@@ -40,7 +40,7 @@ const AppComponent = React.createClass({
     var center = _.get(this.state.weatherData, 'coord');
     return (
       <div className="container-fluid">
-        <Header {...this.state.weatherData} />
+        
         {
           _.isEmpty(center) ? null: <Map center={center} />
         }

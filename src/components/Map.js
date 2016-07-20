@@ -7,11 +7,14 @@ const PopInfoWindow = React.createClass({
     return {center: {}, markers: []};
   },
 
-  componentDidMount: function() {
-    var center = this.props.center;
-    var position = new google.maps.LatLng(parseFloat(center.lat), parseFloat(center.lon));
-    var marker = _.assign({}, {'position': position}, {'showInfo': false});
-    this.setState({center: center, markers: [marker]});
+  componentWillMount: function() {
+    var center = this.props.center, 
+    position = new google.maps.LatLng(Number(center.lat), Number(center.lon)),
+    marker = _.assign({}, {'position': position}, {'showInfo': false}),
+    newCenter = {};
+    _.set(newCenter, 'lat', Number(center.lat));
+    _.set(newCenter, 'lng', Number(center.lon));
+    this.setState({center: newCenter, markers: [marker]});
   },
 
   handleMarkerClick: function(marker) {
@@ -35,13 +38,14 @@ const PopInfoWindow = React.createClass({
   },
 
   render: function() {
+    var self = this;
     return (
       <GoogleMapLoader 
         containerElement={
           <div
             {...this.props}
             style={{
-              height: '100%'
+              height: '100%',
             }}>
           </div>
         }
@@ -57,8 +61,8 @@ const PopInfoWindow = React.createClass({
                   key={index}
                   ref={ref}
                   position={marker.position}
-                  onClick={this.handleMarkerClick.bind(this, marker)}>
-                    {marker.showInfo ? this.renderInfoWindow(ref, marker): null}
+                  onClick={self.handleMarkerClick}>
+                    {marker.showInfo ? self.renderInfoWindow(ref, marker): null}
                   </Marker>
               );
             })
