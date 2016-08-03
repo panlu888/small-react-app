@@ -3,7 +3,7 @@ var foodSearchConstants = require('../constants/foodSearchConstants');
 var apis = require('../apis/foodSearchApi');
 
 const FoodSearchActions = {
-	searchByName: function(name) {
+	searchByName: function (name) {
 		apis.searchByName(name, (data) => {
 			AppDispatcher.dispatch({
 				actionType: foodSearchConstants.SEARCH_NAME_SUCCESS,
@@ -16,11 +16,11 @@ const FoodSearchActions = {
 			});
 		});
 	},
-	
-	searchByZip: function(zip, countryCode) {
+
+	searchByZip: function (zip, countryCode) {
 		apis.searchByZip(zip, countryCode, (data) => {
 			AppDispatcher.dispatch({
-				actionType: foodSearchConstants.SEARCH_ZIP_SUCCESS,		
+				actionType: foodSearchConstants.SEARCH_ZIP_SUCCESS,
 				weatherData: data
 			});
 		}, (error) => {
