@@ -34,7 +34,7 @@ const HeaderComponent = React.createClass({
 
 	handleChange: function(event) {
     this.setState({zip: event.target.value});
-  },
+  	},
 	
 	render: function() {
 		return (
@@ -51,7 +51,7 @@ const HeaderComponent = React.createClass({
 					<form className="form-inline pull-right">
     				<input className="form-control" type="text" value={this.state.zip} placeholder="Zip or City Name" onChange={this.handleChange} />
     				<button className="btn btn-success" type="submit" onClick={this.searchWeather}>Search</button>
-  				</form>
+  					</form>
 				</nav>
 		);
 	}
