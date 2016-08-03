@@ -3,44 +3,44 @@ import { GoogleMapLoader, GoogleMap, InfoWindow, Marker } from "react-google-map
 var _ = require('lodash');
 
 const PopInfoWindow = React.createClass({
-  getInitialState: function() {
-    return {center: {}, markers: []};
+  getInitialState: function () {
+    return { center: {}, markers: [] };
   },
 
-  componentWillMount: function() {
-    var center = this.props.center, 
-    position = new google.maps.LatLng(Number(center.lat), Number(center.lon)),
-    marker = _.assign({}, {'position': position}, {'showInfo': false}),
-    newCenter = {};
+  componentWillMount: function () {
+    var center = this.props.center,
+      position = new google.maps.LatLng(Number(center.lat), Number(center.lon)),
+      marker = _.assign({}, { 'position': position }, { 'showInfo': false }),
+      newCenter = {};
     _.set(newCenter, 'lat', Number(center.lat));
     _.set(newCenter, 'lng', Number(center.lon));
-    this.setState({center: newCenter, markers: [marker]});
+    this.setState({ center: newCenter, markers: [marker] });
   },
 
-  handleMarkerClick: function(marker) {
+  handleMarkerClick: function (marker) {
     marker.showInfo = true;
-    this.setState({markers: [marker]});
+    this.setState({ markers: [marker] });
   },
 
-  handleMarkerClose: function(marker) {
+  handleMarkerClose: function (marker) {
     marker.showInfo = false;
-    this.setState({markers: [marker]});
+    this.setState({ markers: [marker] });
   },
-  
-  renderInfoWindow: function(ref, marker) {
+
+  renderInfoWindow: function (ref, marker) {
     return (
-      <InfoWindow 
-      key={ref+'_info_window'}
-      onCloseClick={this.handleMarkerClose.bind(this, marker)}>
-        <div>hello world</div>  
+      <InfoWindow
+        key={ref + '_info_window'}
+        onCloseClick={this.handleMarkerClose.bind(this, marker) }>
+        <div>hello world</div>
       </InfoWindow>
     );
   },
 
-  render: function() {
+  render: function () {
     var self = this;
     return (
-      <GoogleMapLoader 
+      <GoogleMapLoader
         containerElement={
           <div
             {...this.props}
@@ -52,9 +52,9 @@ const PopInfoWindow = React.createClass({
         googleMapElement={
           <GoogleMap
             center={this.state.center}
-            defaultZoom={4}  
+            defaultZoom={4}
             ref='map'>
-            {this.state.markers.map(function(marker, index) {
+            {this.state.markers.map(function (marker, index) {
               const ref = 'marker_' + index;
               return (
                 <Marker
@@ -62,14 +62,14 @@ const PopInfoWindow = React.createClass({
                   ref={ref}
                   position={marker.position}
                   onClick={self.handleMarkerClick}>
-                    {marker.showInfo ? self.renderInfoWindow(ref, marker): null}
-                  </Marker>
+                  {marker.showInfo ? self.renderInfoWindow(ref, marker) : null}
+                </Marker>
               );
             })
-          }
+            }
           </GoogleMap>
-        }  
-      />
+        }
+        />
 
     );
   }

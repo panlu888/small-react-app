@@ -11,38 +11,38 @@ import 'bootstrap/dist/css/bootstrap.css';
 var _ = require('lodash');
 
 const AppComponent = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return { weatherData: SearchStore.getcurWeatherData() };
   },
-  
-  componentDidMount: function() {
-  	SearchStore.addChangeListener(this._onChange);
-    Api.searchByZip('30022', 'us', this._successCallBack,  this._errorCallBack);
-  },	
-  
-  componentWillUnmount: function() {
-  	SearchStore.removeChangeListener(this._onChange);
+
+  componentDidMount: function () {
+    SearchStore.addChangeListener(this._onChange);
+    Api.searchByZip('30022', 'us', this._successCallBack, this._errorCallBack);
   },
-  
-  _onChange: function() {
+
+  componentWillUnmount: function () {
+    SearchStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
     this.setState({ weatherData: SearchStore.getcurWeatherData() });
   },
-  
-  _successCallBack: function(data) {
+
+  _successCallBack: function (data) {
     this.setState({ weatherData: data });
   },
-  
-  _errorCallBack: function(err) {
+
+  _errorCallBack: function (err) {
     console.log(err);
   },
-  
-  render: function() {
+
+  render: function () {
     var center = _.get(this.state.weatherData, 'coord');
     return (
       <div className="container-fluid">
-        
+
         {
-          _.isEmpty(center) ? null: <Map center={center} />
+          _.isEmpty(center) ? null : <Map center={center} />
         }
       </div>
     );
